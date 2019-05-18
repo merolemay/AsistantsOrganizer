@@ -1,9 +1,19 @@
 package application;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AssistantsGUIController {
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Window;
+import model.AttendansOrganizer;
+
+public class AssistantsGUIController implements Initializable{
 
     @FXML
     private TextField loadTextField;
@@ -13,5 +23,35 @@ public class AssistantsGUIController {
 
     @FXML
     private TextField sTextField;
+    
+    AttendansOrganizer organizer;
+    
+    /* This method conect uses a FileChoser to load the list of attendents to the event 
+    */
+    public void fileLoaderOption() {
+    	Window w = null;
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	fileChooser.setInitialDirectory(new File(System.getProperty("./data")));
+    	 fileChooser.setTitle("Open Resource File");
+    	 fileChooser.getExtensionFilters().addAll(
+    	         new ExtensionFilter("Text Files", "*.txt"),
+    	         new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+    	         new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+    	         new ExtensionFilter("All Files", "*.*"));
+    	 File selectedFile = fileChooser.showOpenDialog(w );
+    	 if (selectedFile != null && selectedFile.canRead()) {
+    		 try {
+				organizer.loadFile(selectedFile.getName());
+			} catch (IOException e) {
+			}
+    	 }
+    	 
+    }
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		organizer = new AttendansOrganizer();
+	}
 
 }

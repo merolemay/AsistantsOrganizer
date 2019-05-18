@@ -1,9 +1,9 @@
 package model;
 
-public class Assistant {
+public class Attendants {
 	
 	private int id;
-	private Assistant next;
+	private Attendants next,left,right;
 	private String first_name,last_name,email,gender,country,photo,birthday;
 	/**
 	 * @param id
@@ -15,8 +15,8 @@ public class Assistant {
 	 * @param photo
 	 * @param birthday
 	 */
-	public Assistant(int id, String first_name, String last_name, String email, String gender, String country,
-			String photo, String birthday, Assistant next) {
+	public Attendants(int id, String first_name, String last_name, String email, String gender, String country,
+			String photo, String birthday) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -27,6 +27,8 @@ public class Assistant {
 		this.photo = photo;
 		this.birthday = birthday;
 		next =null;
+		right= null;
+		left = null;
 	}
 	/**
 	 * @return the id
@@ -124,18 +126,40 @@ public class Assistant {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public Assistant getNext() {
+	public Attendants getNext() {
 		return next;
 	}
-	public void setNext(Assistant next) {
+	public void setNext(Attendants next) {
 		this.next = next;
 	}
 	
+	/**
+	 * @return the left
+	 */
+	public Attendants getLeft() {
+		return left;
+	}
+	/**
+	 * @param left the left to set
+	 */
+	public void setLeft(Attendants left) {
+		this.left = left;
+	}
+	/**
+	 * @return the right
+	 */
+	public Attendants getRight() {
+		return right;
+	}
+	/**
+	 * @param right the right to set
+	 */
+	public void setRight(Attendants right) {
+		this.right = right;
+	}
 	@Override
 	public String toString() {
 		return null;
 	}
-	
-	
 
 }
