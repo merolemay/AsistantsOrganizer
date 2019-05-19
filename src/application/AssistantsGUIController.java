@@ -32,13 +32,9 @@ public class AssistantsGUIController implements Initializable{
     	Window w = null;
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Open Resource File");
-    	fileChooser.setInitialDirectory(new File(System.getProperty("./data")));
-    	 fileChooser.setTitle("Open Resource File");
+    	fileChooser.setInitialDirectory(new File(System.getProperty("./data/AsistantsInfo.txt")));
     	 fileChooser.getExtensionFilters().addAll(
-    	         new ExtensionFilter("Text Files", "*.txt"),
-    	         new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-    	         new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-    	         new ExtensionFilter("All Files", "*.*"));
+    	         new ExtensionFilter("Text Files", "*.txt"));
     	 File selectedFile = fileChooser.showOpenDialog(w );
     	 if (selectedFile != null && selectedFile.canRead()) {
     		 try {
